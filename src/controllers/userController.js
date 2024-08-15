@@ -86,7 +86,27 @@ const deleteUser = async (req, res) => {
     }
 };
 
+const changePassword = async (req, res) => {
+    const { newPassword,email } = req.body;
 
+    try {
+        if (!newPassword) {
+            return res.status(400).json({
+                err: 1,
+                message: 'Thiếu mật khẩu mới'
+            });
+        }
+        const response = await service.changePassword(email, newPassword);
+
+        if (response.message === 'Mật khẩu đã được thay đổi thành công') {
+            return res.status(200).json(response);
+        } else {
+            return res.status(404).json(response);
+        }
+    } catch (error) {
+        return interalServerError(res);
+    }
+};
 module.exports={
-    registerUser,login,getAllUser,getUserId,updateUser,deleteUser
+    registerUser,login,getAllUser,getUserId,updateUser,deleteUser,changePassword
 }

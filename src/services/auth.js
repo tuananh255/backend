@@ -135,3 +135,30 @@ export const deleteUserById = (id) => new Promise(async (resolve, reject) => {
         reject(error);
     }
 });
+// service.js
+export const changePassword = (email, newPassword) => new Promise(async (resolve, reject) => {
+    try {
+        const user = await db.User.findOne({ where: { email: email } });
+        if (user) {
+            user.password = hashPassword(newPassword);
+            await user.save();
+
+            resolve({
+                message: 'Mật khẩu đã được thay đổi thành công',
+                user: {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    phone: user.phone
+                }
+            });
+        } else {
+            resolve({
+                message: 'Người dùng không tìm thấy'
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        reject(error);
+    }
+});
