@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('luat_db', 'root', null, {
-  host: 'localhost',
-  dialect: 'mysql',
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.ROOT, null, {
+  host: process.env.HOST,
+  dialect: process.env.DIALECT,
   logging:false
 });
 const connectionDatabase = async ()=>{

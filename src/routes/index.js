@@ -10,6 +10,7 @@ import CtaHomeRoute from './CtaHomeRoute'
 import newsHomeRoute from './newsHomeRoute'
 
 import serviceRouter from './serviceRouter'
+import nhansuRoute from './nhansuRoute'
 import { notFound } from '../middewares/handleError'
 const initRoutes=(app)=>{
     app.use('/api/v1/auth',user)
@@ -23,6 +24,7 @@ const initRoutes=(app)=>{
     app.use('/api/v1/news',newsHomeRoute)
 
     app.use('/api/v1/service',serviceRouter)
+    app.use('/api/v1/nhansu',nhansuRoute)
 
     // gọi request không hợp lệ ,
     app.use(notFound)

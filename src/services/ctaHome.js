@@ -20,12 +20,14 @@ export const getAllCtaHome = () => new Promise(async (resolve, reject) => {
         console.log(home)
         resolve({
             message: 'Lấy tất cả thành công',
-            Cta: home
+            home: home
         });
     } catch (error) {
+        console.error("Lỗi khi lấy dữ liệu từ Cta:", error);
         reject(error);
     }
 });
+
 
 export const getAllCtaId = (id) => new Promise(async (resolve, reject) => {
     try {

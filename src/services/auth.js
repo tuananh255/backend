@@ -1,14 +1,12 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import db from '../models'
-// thêm muối vào pass :v
 const hashPassword = password=> bcrypt.hashSync(password,bcrypt.genSaltSync(10))
 export const register=(data)=> new Promise(async(resolve,reject)=>{
     try {
-        // findOrCreate  trả về một mảng [data,boolean]
         const response = await db.User.findOrCreate({
-            where:{ email: data.email}, // search in db
-            defaults:{  // nếu không tìm thấy thì tạo mới
+            where:{ email: data.email},
+            defaults:{  
                 name:data.name,
                 email:data.email,
                 password: hashPassword(data.password),
@@ -17,7 +15,6 @@ export const register=(data)=> new Promise(async(resolve,reject)=>{
                 role : data.role
             }
         })
-        // mã hoá token từ dữ liệu đó , hết hạn token
         const token = response[1] ? jwt.sign({id:response[0].id,email:response[0].email,role:response[0].role},process.env.JWT_SECRET,{expiresIn:'2d'}) : null
         resolve({
             err: response[1] ? 0 : 1,
@@ -51,7 +48,6 @@ export const login=({email,password})=> new Promise(async(resolve,reject)=>{
                 token : token ? token : null
             },
             message: token ? 'Đăng nhập thành công' : response ? 'Mật khẩu sai':'Email chưa được đăng ký',
-            // 'access_token' : token ? token : null
         })
     } catch (error) {
         reject(error)

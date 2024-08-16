@@ -32,9 +32,9 @@ const getAllCtaId =async (req,res)=>{
 }
 
 const updateCta = async (req, res) => {
-    const { title, description ,id} = req.body;
+    const { title, desription ,id} = req.body;
     try {
-        const response = await service.updateCta({id, title, description });
+        const response = await service.updateCta({id, title, desription });
         return res.status(200).json(response);
     } catch (error) {
         return interalServerError(res);

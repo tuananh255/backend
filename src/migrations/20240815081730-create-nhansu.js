@@ -2,27 +2,39 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('FeedBacks', {
+    await queryInterface.createTable('Nhansus', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      name: {
         type: Sequelize.STRING
       },
-      desription: {
+      vitri: {
         type: Sequelize.STRING
       },
-      feedBackHomeId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Homes', // Tên bảng chính
-          key: 'id' // Khóa chính trong bảng 'Homes'
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
+      phone: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      review: {
+        type: Sequelize.STRING
+      },
+      kinhnghiem: {
+        type: Sequelize.STRING
+      },
+      hocvan: {
+        type: Sequelize.STRING
+      },
+      thanhtich: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +49,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('FeedBacks');
+    await queryInterface.dropTable('Nhansus');
   }
 };

@@ -9,3 +9,4 @@ export * from './FeedBackHomeCtl'
 export * from './newsHomeCtl'
 
 export * from './ServiceCtl'
+export * from './NhansuCtl'

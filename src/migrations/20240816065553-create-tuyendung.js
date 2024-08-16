@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('FeedBacks', {
+    await queryInterface.createTable('tuyendungs', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,18 +12,10 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      desription: {
+      description: {
         type: Sequelize.STRING
       },
-      feedBackHomeId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Homes', // Tên bảng chính
-          key: 'id' // Khóa chính trong bảng 'Homes'
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-      },
+      
       createdAt: {
         allowNull: false,
         type: "TIMESTAMP",
@@ -37,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('FeedBacks');
+    await queryInterface.dropTable('tuyendungs');
   }
 };

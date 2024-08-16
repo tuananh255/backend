@@ -4,14 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class FeedBack extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
-      FeedBack.belongsTo(models.Home, { foreignKey: 'homeId', as: 'home' });
+      // Định nghĩa các liên kết ở đây
+      FeedBack.belongsTo(models.Home, { foreignKey: 'feedBackHomeId', as: 'home' });
+      FeedBack.hasMany(models.feedbackDetails, { foreignKey: 'feedBackId', as: 'details' });
     }
   }
   FeedBack.init({
@@ -24,15 +20,6 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       },
     },
-    title1: DataTypes.STRING,
-    desription1: DataTypes.STRING,
-    img1: DataTypes.STRING,
-    title2: DataTypes.STRING,
-    desription2: DataTypes.STRING,
-    img2: DataTypes.STRING,
-    title3: DataTypes.STRING,
-    desription3: DataTypes.STRING,
-    img3: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'FeedBack',
