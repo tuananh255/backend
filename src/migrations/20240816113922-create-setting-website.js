@@ -2,47 +2,33 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Ungviens', {
+    await queryInterface.createTable('settingWebsites', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false // Có thể cần phải có thông tin bắt buộc
-      },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      phone: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      positionApplied: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      status: {
-        type: Sequelize.ENUM('Đã tuyển', 'Loại', 'Đang phỏng vấn', 'Đã phỏng vấn'),
-        defaultValue: 'Đang phỏng vấn'
-      },
-      cvImage: {
+      title: {
         type: Sequelize.STRING
       },
-      contentMessage :{
+      logo: {
         type: Sequelize.STRING
       },
-      tuyendungId: {
+      favicon: {
+        type: Sequelize.STRING
+      },
+      ngonngu: {
+        type: Sequelize.STRING
+      },
+      settingId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'tuyendungs',
+          model: 'websites',
           key: 'id'
         },
         onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
@@ -56,8 +42,7 @@ module.exports = {
       }
     });
   },
-
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Ungviens');
+    await queryInterface.dropTable('settingWebsites');
   }
 };

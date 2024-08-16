@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false // Có thể cần thông tin bắt buộc
       },
+      image: {
+        type: Sequelize.STRING,
+        allowNull: false // Có thể cần thông tin bắt buộc
+      },
       postTdId: {
         type: Sequelize.INTEGER,
         references: {

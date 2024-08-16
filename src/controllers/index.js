@@ -10,3 +10,6 @@ export * from './newsHomeCtl'
 
 export * from './ServiceCtl'
 export * from './NhansuCtl'
+export * from './TuyendungCtl'
+export * from './BaivietCtl'
+export * from './CauhinhWeb'

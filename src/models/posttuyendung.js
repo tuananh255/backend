@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   postTuyenDung.init({
     title: DataTypes.STRING,
     description: DataTypes.STRING,
+    image: DataTypes.STRING,
     expireDate: DataTypes.DATEONLY, // Sử dụng DataTypes.DATEONLY để lưu ngày hết hạn
     postTdId: {
       type: DataTypes.INTEGER,

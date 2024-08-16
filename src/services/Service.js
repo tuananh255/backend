@@ -4,7 +4,6 @@ export const addService=({title,slug,description,content,imgThumbnail,metaTitle,
         const response = await db.service.create({
             title,slug,description,imgThumbnail,content,metaDescription,metaTitle
         });
-        console.log(response)
         resolve({
             message: 'tạo thành công',
             service: response

@@ -11,6 +11,9 @@ import newsHomeRoute from './newsHomeRoute'
 
 import serviceRouter from './serviceRouter'
 import nhansuRoute from './nhansuRoute'
+import tuyendungRoute from './tuyendungRoute'
+import baivietRoute from './baivietRoute'
+import CauhinhWebRoute from './CauhinhWebRoute'
 import { notFound } from '../middewares/handleError'
 const initRoutes=(app)=>{
     app.use('/api/v1/auth',user)
@@ -25,6 +28,9 @@ const initRoutes=(app)=>{
 
     app.use('/api/v1/service',serviceRouter)
     app.use('/api/v1/nhansu',nhansuRoute)
+    app.use('/api/v1/tuyendung',tuyendungRoute)
+    app.use('/api/v1/baiviet',baivietRoute)
+    app.use('/api/v1/website',CauhinhWebRoute)
 
     // gọi request không hợp lệ ,
     app.use(notFound)

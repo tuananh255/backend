@@ -12,13 +12,14 @@ module.exports = (sequelize, DataTypes) => {
   Ungvien.init({
     name: DataTypes.STRING, // Đổi tên cho phù hợp
     email: DataTypes.STRING, 
-    phoneNumber: DataTypes.STRING, // sdt
+    phone: DataTypes.STRING, // sdt
     positionApplied: DataTypes.STRING, // vị trí tuyển dụng
     status: {
       type: DataTypes.ENUM('Đã tuyển', 'Loại', 'Đang phỏng vấn', 'Đã phỏng vấn'),
       defaultValue: 'Đang phỏng vấn'
     },
     cvImage: DataTypes.STRING, // ảnh cv
+    contentMessage: DataTypes.STRING, // nội dung tin nhắn
     tuyendungId: {
       type: DataTypes.INTEGER,
       references: {
